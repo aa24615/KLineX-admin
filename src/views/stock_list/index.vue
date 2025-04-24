@@ -83,8 +83,9 @@
         </el-card>
         <el-card class="!border-none" v-loading="pager.loading" shadow="never">
             <div>
-                <el-table :data="pager.lists" @selection-change="handleSelectionChange"
-                          :default-sort="{ prop: 'percent', order: 'descending' }"
+                <el-table :data="pager.lists"
+                          :default-sort="{ prop: queryParams.field, order: queryParams.order_by }"
+                          @sort-change='sortChange'
                 >
                     <el-table-column label="股票代码" width="80" prop="symbol" show-overflow-tooltip />
 
@@ -158,7 +159,9 @@ const queryParams = reactive({
     dividend_yield: '',
     market_capital: '',
     float_market_capital: '',
-    updated_at: ''
+    updated_at: '',
+    field:'percent',
+    order_by:'desc'
 })
 
 // 选中数据
@@ -198,6 +201,16 @@ const handleDelete = async (id: number | any[]) => {
     await feedback.confirm('确定要删除？')
     await apiStockListDelete({ id })
     getLists()
+}
+
+const sortChange = (data: any) => {
+    console.log(data);
+    const { prop, order } = data
+
+    queryParams.field = prop;
+    queryParams.order_by = order;
+
+    resetPage()
 }
 
 getLists()
