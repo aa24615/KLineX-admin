@@ -7,7 +7,7 @@
                 inline
             >
                 <el-form-item :label-width='labelWidth' label="股票代码" prop="code">
-                    <el-input class="w-[160px]" v-model="queryParams.symbol" clearable placeholder="请输入代码" />
+                    <el-input class="w-[160px]" v-model="queryParams.symbol" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="交易所" prop="exchange">
@@ -35,49 +35,53 @@
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="股票名称" prop="name">
-                    <el-input class="w-[160px]" v-model="queryParams.name" clearable placeholder="请输入股票名称" />
+                    <el-input class="w-[160px]" v-model="queryParams.name" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="当前价" prop="current">
-                    <el-input class="w-[160px]" v-model="queryParams.current" clearable placeholder="请输入当前价" />
+                    <el-input class="w-[160px]" v-model="queryParams.current" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="涨跌幅" prop="percent">
-                    <el-input class="w-[160px]" v-model="queryParams.percent" clearable placeholder="请输入涨跌幅" />
+                    <el-input class="w-[160px]" v-model="queryParams.percent" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="成交量" prop="volume">
-                    <el-input class="w-[160px]" v-model="queryParams.volume" clearable placeholder="请输入成交量" />
+                    <el-input class="w-[160px]" v-model="queryParams.volume" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="成交额" prop="amount">
-                    <el-input class="w-[160px]" v-model="queryParams.amount" clearable placeholder="请输入成交额" />
+                    <el-input class="w-[160px]" v-model="queryParams.amount" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="换手率" prop="turnover_rate">
-                    <el-input class="w-[160px]" v-model="queryParams.turnover_rate" clearable placeholder="请输入换手率" />
+                    <el-input class="w-[160px]" v-model="queryParams.turnover_rate" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="市盈率" prop="pe_ttm">
-                    <el-input class="w-[160px]" v-model="queryParams.pe_ttm" clearable placeholder="请输入市盈率(TTM)" />
+                    <el-input class="w-[160px]" v-model="queryParams.pe_ttm" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="股息率" prop="dividend_yield">
-                    <el-input class="w-[160px]" v-model="queryParams.dividend_yield" clearable placeholder="请输入股息率" />
+                    <el-input class="w-[160px]" v-model="queryParams.dividend_yield" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="总市值" prop="market_capital">
-                    <el-input class="w-[160px]" v-model="queryParams.market_capital" clearable placeholder="请输入总市值" />
+                    <el-input class="w-[160px]" v-model="queryParams.market_capital" clearable placeholder="" />
                 </el-form-item>
 
                 <el-form-item :label-width='labelWidth' label="流通市值" prop="float_market_capital">
-                    <el-input class="w-[160px]" v-model="queryParams.float_market_capital" clearable placeholder="请输入流通市值" />
+                    <el-input class="w-[160px]" v-model="queryParams.float_market_capital" clearable placeholder="" />
                 </el-form-item>
 
 
                 <el-form-item>
                     <el-button type="primary" @click="resetPage">查询</el-button>
                     <el-button @click="resetParams">重置</el-button>
+
+                    <span class='ml-5 text-[#999]'>
+                        小提示: 可以使用逗号分隔, 如: 10,20 来表范围筛选
+                    </span>
                 </el-form-item>
             </el-form>
         </el-card>
@@ -87,7 +91,7 @@
                           :default-sort="{ prop: queryParams.field, order: queryParams.order_by }"
                           @sort-change='sortChange'
                 >
-                    <el-table-column label="股票代码" width="80" prop="symbol" show-overflow-tooltip />
+                    <el-table-column label="股票代码" width="100" prop="symbol" show-overflow-tooltip />
 
                     <el-table-column label="类型" width="60" prop="market">
                         <template #default="{ row }">
