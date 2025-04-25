@@ -80,7 +80,7 @@
                     <el-button @click="resetParams">重置</el-button>
 
                     <span class='ml-5 text-[#999]'>
-                        小提示: 可以使用逗号分隔, 如: 10,20 来表范围筛选
+                        小提示: 可以使用英文逗号分隔, 如: 10,20 来范围筛选
                     </span>
                 </el-form-item>
             </el-form>
